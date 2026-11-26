@@ -1,35 +1,39 @@
 # InternMatch 🎯
 
-A small NLP tool that compares a CV with an internship offer.
+Un petit outil de NLP qui compare un CV avec une offre de stage.
 
-- Gives a **match score** out of 100
-- Lists the **keywords from the offer missing in the CV**
-- Works with a PDF CV or pasted text
+- Donne un **score de compatibilité** sur 100
+- Liste les **mots-clés de l'offre absents du CV**
+- Fonctionne avec un CV en PDF ou du texte collé
 
-I built it while looking for my own internship abroad.
+Je l'ai créé pendant ma propre recherche de stage à l'étranger.
 
-## How it works
+## Comment ça marche
 
-1. Both texts are turned into vectors with **TF-IDF** (each word gets a weight: frequent in this text, rare in general = important).
-2. The **cosine similarity** between the two vectors gives the match score.
-3. The most important words of the offer that do not appear in the CV are shown as missing keywords.
+1. Les deux textes sont transformés en vecteurs avec **TF-IDF** (chaque mot reçoit un poids : fréquent dans ce texte mais rare en général = important).
+2. La **similarité cosinus** entre les deux vecteurs donne le score de compatibilité.
+3. Les mots les plus importants de l'offre qui n'apparaissent pas dans le CV sont affichés comme mots-clés manquants.
 
-## Built with
+## Technologies
 
 - Python
-- scikit-learn (TF-IDF, cosine similarity)
-- Streamlit (web interface)
-- pypdf (reads PDF CVs)
+- scikit-learn (TF-IDF, similarité cosinus)
+- Streamlit (interface web)
+- pypdf (lecture des CV en PDF)
 
-## Run it
+## Lancer le projet
 
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## What I learned
+## Ce que j'ai appris
 
-- Turning text into numbers with TF-IDF
-- Measuring similarity between documents
-- Building a simple web app in Python
+- Transformer du texte en nombres avec TF-IDF
+- Mesurer la similarité entre deux documents
+- Créer une application web simple en Python
+
+## Limite
+
+L'outil compare des mots, pas leur sens : le CV et l'offre doivent être dans la même langue (anglais conseillé).

@@ -1,18 +1,20 @@
 # InternMatch 🎯
 
-Un petit outil de NLP qui compare un CV avec une offre de stage.
+Un petit outil qui vérifie si un CV correspond à une annonce de stage.
 
-- Donne un **score de compatibilité** sur 100
-- Liste les **mots-clés de l'offre absents du CV**
-- Fonctionne avec un CV en PDF ou du texte collé
+## Ce qu'il fait
 
-Je l'ai créé pendant ma propre recherche de stage à l'étranger.
+1. Donne un **score de compatibilité** sur 100 entre ton CV et l'annonce
+2. Liste les **mots-clés de l'annonce absents de ton CV** (ceux que cherchent les recruteurs et les logiciels de tri)
+3. Vérifie que ton CV contient les **rubriques attendues en France** : expériences, formation, compétences, langues, email, téléphone
+
+Je l'ai créé pendant ma propre recherche de stage.
 
 ## Comment ça marche
 
-1. Les deux textes sont transformés en vecteurs avec **TF-IDF** (chaque mot reçoit un poids : fréquent dans ce texte mais rare en général = important).
-2. La **similarité cosinus** entre les deux vecteurs donne le score de compatibilité.
-3. Les mots les plus importants de l'offre qui n'apparaissent pas dans le CV sont affichés comme mots-clés manquants.
+- Les deux textes sont nettoyés (minuscules, accents retirés, petits mots comme "le", "de", "pour" ignorés).
+- Ils sont transformés en vecteurs avec **TF-IDF** : chaque mot reçoit un poids selon son importance.
+- La **similarité cosinus** entre les deux vecteurs donne le score.
 
 ## Technologies
 
@@ -28,12 +30,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Ce que j'ai appris
-
-- Transformer du texte en nombres avec TF-IDF
-- Mesurer la similarité entre deux documents
-- Créer une application web simple en Python
-
 ## Limite
 
-L'outil compare des mots, pas leur sens : le CV et l'offre doivent être dans la même langue (anglais conseillé).
+L'outil compare des mots, pas leur sens : le CV et l'annonce doivent être dans la même langue.
+Une amélioration possible serait d'utiliser des embeddings pour comparer le sens des phrases.
